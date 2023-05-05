@@ -1,11 +1,13 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import EditTodo from "./EditTodo";
 
 const BE_HOST = process.env.REACT_APP_BE_HOST;
 
 const ListTodos = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([{ todo_id: '123', description: 'fantastic todo'
+},{ todo_id: '1234', description: 'fantastic todo mine'
+}]);
 
   //delete todo function
 
@@ -38,21 +40,23 @@ const ListTodos = () => {
 
   console.log(todos);
 
+
+
   return (
-    <Fragment>
-      {" "}
-      <table class="table mt-5 text-center">
-        <thead>
-          <tr>
-            <th>Description</th>
+      <table className="flex flex-col">
+
+        <thead className="flex justify-center items-center pt-10 w-full">
+          <tr className="flex items-center justify-around w-full p-4 border-b drop-shadow-md">
+            <th className="w-1/2">Description</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody>
+
+        <tbody className="flex flex-col justify-center items-center pt-4 w-full gap-4">
           {todos.map(todo => (
-            <tr key={todo.todo_id}>
-              <td>{todo.description}</td>
+            <tr key={todo.todo_id} className="flex bg-gray-200 opacity-50 rounded justify-around items-center w-full p-2">
+              <td className="w-1/2 text-center">{todo.description}</td>
               <td>
                 <EditTodo todo={todo} />
               </td>
@@ -67,8 +71,8 @@ const ListTodos = () => {
             </tr>
           ))}
         </tbody>
+        
       </table>
-    </Fragment>
   );
 };
 
