@@ -2,6 +2,8 @@ import React, { Fragment, useEffect, useState } from "react";
 
 import EditTodo from "./EditTodo";
 
+const BE_HOST = process.env.REACT_APP_BE_HOST;
+
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
 
@@ -9,7 +11,7 @@ const ListTodos = () => {
 
   const deleteTodo = async id => {
     try {
-      const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
+      const deleteTodo = await fetch(`http://${BE_HOST}/todos/${id}`, {
         method: "DELETE"
       });
 
@@ -21,7 +23,7 @@ const ListTodos = () => {
 
   const getTodos = async () => {
     try {
-      const response = await fetch("http://localhost:5000/todos");
+      const response = await fetch(`http://${BE_HOST}/todos`);
       const jsonData = await response.json();
 
       setTodos(jsonData);
@@ -48,11 +50,6 @@ const ListTodos = () => {
           </tr>
         </thead>
         <tbody>
-          {/*<tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-          </tr> */}
           {todos.map(todo => (
             <tr key={todo.todo_id}>
               <td>{todo.description}</td>

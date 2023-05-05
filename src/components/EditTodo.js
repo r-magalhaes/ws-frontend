@@ -3,6 +3,8 @@ import React, { Fragment, useState } from "react";
 const EditTodo = ({ todo }) => {
   const [description, setDescription] = useState(todo.description);
 
+  const BE_HOST = process.env.REACT_APP_BE_HOST;
+
   //edit description function
 
   const updateDescription = async e => {
@@ -10,7 +12,7 @@ const EditTodo = ({ todo }) => {
     try {
       const body = { description };
       const response = await fetch(
-        `http://localhost:5000/todos/${todo.todo_id}`,
+        `http://${BE_HOST}/todos/${todo.todo_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

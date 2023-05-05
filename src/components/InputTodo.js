@@ -3,11 +3,13 @@ import React, { Fragment, useState } from "react";
 const InputTodo = () => {
   const [description, setDescription] = useState("");
 
+  const BE_HOST = process.env.REACT_APP_BE_HOST;
+
   const onSubmitForm = async e => {
     e.preventDefault();
     try {
       const body = { description };
-      const response = await fetch("http://localhost:5000/todos", {
+      const response = await fetch(`http://${BE_HOST}/todos`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
