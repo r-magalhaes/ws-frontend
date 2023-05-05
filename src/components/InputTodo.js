@@ -23,15 +23,16 @@ const InputTodo = () => {
 
   return (
     <Fragment>
-      <h1 className="text-center mt-5">IPV Workshop</h1>
-      <form className="d-flex mt-5" onSubmit={onSubmitForm}>
+      {/* <h1 className="text-center mt-5">IPV Workshop</h1> */}
+      <h1 className="text-5xl text-center font-bold py-20">ToDo List</h1>
+      <form onSubmit={onSubmitForm} className="flex items-center justify-center gap-4">
         <input
           type="text"
-          className="form-control"
+          className="border-gray-200 border rounded py-2 px-3 w-1/2 focus:border-green-400 drop-shadow-xl"
           value={description}
           onChange={e => setDescription(e.target.value)}
         />
-        <button className="btn btn-success">Add</button>
+        <button className="bg-green-400 text-gray-700 py-2 px-5 rounded hover:bg-green-300 drop-shadow-md">Add</button>
       </form>
     </Fragment>
   );

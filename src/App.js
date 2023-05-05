@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import "./App.css";
+//import "./index.css";
 
 //components
 
@@ -9,7 +10,7 @@ import ListTodos from "./components/ListTodos";
 function App() {
   return (
     <Fragment>
-      <div className="container">
+      <div className="container mx-auto">
         <InputTodo />
         <ListTodos />
       </div>

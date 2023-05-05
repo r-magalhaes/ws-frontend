@@ -30,3 +30,19 @@ rm:
 	@echo ""
 
 c: s rm
+
+bd:
+	@echo "Building ${CONTAINER_NAME} for development..."
+	@echo ""
+	docker build -t ${IMAGE_NAME}:dev -f Dockerfile.dev .
+	@echo ""
+
+dr:
+	@echo "Running ${CONTAINER_NAME} for development..."
+	@echo ""
+	docker run --name ${CONTAINER_NAME} -v "$$PWD:/app" -v "node_modules" -p 3000:3000 -it ${IMAGE_NAME}:dev bash
+	@echo ""
+	@echo "Check localhost:3000"
+	@echo ""
+
+godev: bd dr
