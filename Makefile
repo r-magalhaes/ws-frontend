@@ -34,7 +34,7 @@ c: s rm
 bd:
 	@echo "Building ${CONTAINER_NAME} for development..."
 	@echo ""
-	docker build -t ${IMAGE_NAME}:dev -f Dockerfile.dev .
+	docker build -t ${IMAGE_NAME}:dev -f Dockerfile.dev --build-arg BE_HOST="localhost:5000" .
 	@echo ""
 
 dr:

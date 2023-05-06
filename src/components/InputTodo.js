@@ -23,7 +23,6 @@ const InputTodo = () => {
 
   return (
     <Fragment>
-      {/* <h1 className="text-center mt-5">IPV Workshop</h1> */}
       <h1 className="text-5xl text-center font-bold py-20">ToDo List</h1>
       <form onSubmit={onSubmitForm} className="flex items-center justify-center gap-4">
         <input

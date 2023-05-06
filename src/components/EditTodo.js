@@ -1,11 +1,10 @@
 import React, { Fragment, useState } from "react";
 import EditModal from "./EditModal";
 
-const EditTodo = ({ todo }) => {
+const EditTodo = ({ showModal, setShowModal, todo }) => {
   const [description, setDescription] = useState(todo.description);
 
-  const [openModal, setOpenModal] = useState(false);
-
+  //const [openModal, setOpenModal] = useState(false);
 
   const BE_HOST = process.env.REACT_APP_BE_HOST;
 
@@ -34,21 +33,20 @@ const EditTodo = ({ todo }) => {
     <Fragment>
       <button
         type="button"
-        class="btn btn-warning"
+        className="btn btn-warning"
         data-toggle="modal"
         data-target={`#id${todo.todo_id}`}
-        onClick={() => setOpenModal(true)}
-      >
+        onClick={() => setShowModal(true)}>
         Edit
       </button>
 
       <EditModal 
-        openModal={openModal} 
-        setOpenModal={setOpenModal} 
         updateDescription={updateDescription} 
         todo={todo}
-        setDescription={setDescription}
+        showModal={showModal}
+        setShowModal={setShowModal}
         description={description}
+        setDescription={setDescription}
       />
     </Fragment>
   );
