@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 import EditTodo from "./EditTodo";
 
 const BE_HOST = process.env.REACT_APP_BE_HOST;
 
 const ListTodos = () => {
-  const [todos, setTodos] = useState([{ todo_id: '123', description: 'fantastic todo'
-},{ todo_id: '1234', description: 'fantastic todo mine'
-}]);
+  const [todos, setTodos] = useState([]);
+
+  const [showModal, setShowModal] = useState(false);
 
   //delete todo function
 
@@ -40,9 +40,9 @@ const ListTodos = () => {
 
   console.log(todos);
 
-
-
   return (
+    <Fragment>
+
       <table className="flex flex-col">
 
         <thead className="flex justify-center items-center pt-10 w-full">
@@ -55,24 +55,29 @@ const ListTodos = () => {
 
         <tbody className="flex flex-col justify-center items-center pt-4 w-full gap-4">
           {todos.map(todo => (
-            <tr key={todo.todo_id} className="flex bg-gray-200 opacity-50 rounded justify-around items-center w-full p-2">
+            <tr key={todo.todo_id} className="flex bg-gray-200 rounded justify-around items-center w-full p-2">
               <td className="w-1/2 text-center">{todo.description}</td>
               <td>
-                <EditTodo todo={todo} />
+                <EditTodo 
+                  showModal={showModal}
+                  setShowModal={setShowModal}
+                  todo={todo} 
+                />
               </td>
               <td>
                 <button
                   className="btn btn-danger"
-                  onClick={() => deleteTodo(todo.todo_id)}
-                >
+                  onClick={() => deleteTodo(todo.todo_id)}>
                   Delete
                 </button>
               </td>
             </tr>
           ))}
         </tbody>
-        
+
       </table>
+
+    </Fragment>
   );
 };
 
