@@ -1,0 +1,36 @@
+name: Frontend CI
+
+on:
+  push:
+    branches:
+      - test-bb
+
+jobs:
+  infra-scan:
+    name: Frontend CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        run: |
+          echo "Checkout code..."
+
+      - name: Linting
+        run: |
+          echo "Linting here..."
+
+      - name: Code Build
+        run: |
+          echo "Code build here..."
+
+      - name: SCA
+        run: |
+          echo "SCA scan here..."
+
+      - name: SAST Scan
+        run: |
+          echo "SAST scan here..."
+          exit 1
+
+      - name: Infra Scan
+        run: |
+          echo "Infrastructure scan here..."
